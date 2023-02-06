@@ -3,16 +3,14 @@
 }
 
 body{
-  background-color: #191970;
+  background-color: #0b0b41;
   font-family: sans-serif;
-}
-h3{
-  color:white;
+  color: white;
 }
 
 .topnav{
   overflow: hidden;
-  background-color: #191970;
+  background-color: #0b0b41;
   padding: 10px;
 }
 .topnav a{
@@ -31,7 +29,7 @@ h3{
 }
 
 form {
-  background-color: #483d8b;
+  background-color: #2b2556;
   width: 300px;
   height: 43px;
   border-radius: 20px;
@@ -40,9 +38,8 @@ form {
 }
 
 input{
-  all: unset;
   font: 15px system-ui;
-  color: #fff;
+  color: black;
   height: 100%;
   width: 100%;
   padding: 6px 9px;
@@ -63,5 +60,13 @@ input{
   border-radius: 19px;
   padding: 15px;
   text-align: center;
-  background-color: #483d8b;
+  background-color: #28224e;
+}
+
+a{
+  color:#7991d7;
+}
+
+h1, h3{
+ padding-left: 20px;
 }
