@@ -1,5 +1,5 @@
 const url = new URL(location.href);
-const movieId = url.searchParams.get("id");
+const movieId = url.searchParams.get("id")
 const movieTitle = url.searchParams.get("title");
 
 const APILINK = 'https://Movie-review-website-backend.aniashev.repl.co/api/v1/reviews/';
@@ -7,23 +7,6 @@ const APILINK = 'https://Movie-review-website-backend.aniashev.repl.co/api/v1/re
 const main = document.getElementById("section");
 const title = document.getElementById("title");
 title.innerText = movieTitle;
-
-/*const div_new = document.createElement('div');
- div_new.innerHTML = `
-        <div class = "row">
-        <div class = "column"> 
-        <div class="card">
-        New Review
-        <p><strong> Review:</strong>
-        <input type="text" id="new_review" value="">
-        </p>
-        <p><strong>User: </strong>
-        <input type="text" id="new_user" value="">
-        </p>
-        <p><a href= "#" onclick="saveReview('new_review', 'new_user')">💾</a></p>
-      </div>
-    </div>
-  </div>`*/
 
 returnReviews(APILINK);
 
@@ -48,7 +31,10 @@ function returnReviews(url){
 
       main.appendChild(div_card);
     });   
-  });
+  })
+  .catch(error => {
+      console.error("Error while retrieving reviews:", error);
+    });
 }
 
 function editReview(id, review, user){
@@ -84,6 +70,9 @@ function saveReview(reviewInputId, userInputId, id=""){
     .then (res => {
       console.log(res)
       location.reload();
+    })
+      .catch(error => {
+      console.error("Error while updating review:", error);
     });
   } else{
       fetch(APILINK+ "new", {
@@ -97,6 +86,9 @@ function saveReview(reviewInputId, userInputId, id=""){
     .then (res => {
       console.log(res)
       location.reload();
+    }) 
+      .catch(error => {
+      console.error("Error while saving review:", error);
     }); 
   }
 }
