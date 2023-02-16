@@ -46,9 +46,11 @@ input{
 }
 
 .thumbnail{
+  overflow: hidden;
   width: 260px; 
   height: 350px;
   border-radius: 19px;
+  max-width: 100%;
 }
 .column{
   float: left;
