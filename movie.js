@@ -30,7 +30,6 @@ main.appendChild(div_new);
 returnReviews(APILINK);
 
 
-
 function returnReviews(url){
   fetch(url + "movie/" + movieId).then(res => res.json()).then(function(data) {
     console.log(data);
@@ -78,36 +77,42 @@ function saveReview(reviewInputId, userInputId, id=""){
   const review = document.getElementById(reviewInputId).value;
   const user = document.getElementById(userInputId).value;
 
-    if(id) {
-      fetch (APILINK + id,{
+  console.log(review);
+  console.log(user);
+  
+  if(id) {
+    fetch (APILINK + id, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({"user": user, "review": review})
-    }).then(res => res.json())
-    .then (res => {
+    })
+    .then(res => res.json())
+    .then(res => {
       console.log(res)
       location.reload();
     })
-      .catch(error => {
+    .catch(error => {
       console.error("Error while updating review:", error);
     });
-  } else{
-      fetch(APILINK + "new", {
+  } else {
+    console.log("saveReview - MOVIEID " + movieId)
+    fetch(APILINK + "new", {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
-       body: JSON.stringify({"user": user, "review": review, "movieId": movieId})
-    }).then(res => res.json())
+       body: JSON.stringify({"movieId": movieId, "user": user, "review": review})
+    })
+    .then(res => res.json())
     .then (res => {
       console.log(res)
       location.reload();
     }) 
-      .catch(error => {
+    .catch(error => {
       console.error("Error while saving review:", error);
     }); 
   }
